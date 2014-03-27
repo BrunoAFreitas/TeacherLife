@@ -78,7 +78,7 @@ class ChamaQuest {
 	
 	protected function escreveAlternativa($alt,$conteudo){
 		$this->pdf->SetFont('arial','B',12);
-		$this->pdf->Cell(70,20,"$alt:",0,0,'L');
+		$this->pdf->Cell(35,20,"$alt:",0,0,'L');
 		$this->pdf->setFont('arial','',12);
 		$this->pdf->Cell(70,20,$conteudo,0,1,'L');
 	}
