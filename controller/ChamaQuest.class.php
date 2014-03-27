@@ -46,11 +46,11 @@ class ChamaQuest {
 		return $this -> imageQr;
 	}
 	 
-	protected function setGabarito($gab){
+	public function setGabarito($gab){
 		$this -> gabarito = $gab;
 	}
 	
-	protected function getGabarito(){
+	public function getGabarito(){
 		return $this -> gabarito;
 	}
 	

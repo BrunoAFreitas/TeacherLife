@@ -8,6 +8,7 @@ class GeraProvaTurma
 	private $quest;
 	private $crud;
 	private $turma;
+	private $arrayaluno;
 
 	public function __construct( $turma )
 	{
@@ -24,14 +25,13 @@ class GeraProvaTurma
 		$query = $this->crud->select();
 		
 		while($aluno = mysql_fetch_array($query)){			
+			 
 			 $this->quest->geraProva($aluno['tur_aluno']);
-		//echo 'ola';
+			 $this->arrayaluno[$aluno['tur_aluno']] = $this->quest->getGabarito();
+			 
 		}
 		
 		$this->quest->fexarPdf();
-		
-		
-		
 	}
 }
 
