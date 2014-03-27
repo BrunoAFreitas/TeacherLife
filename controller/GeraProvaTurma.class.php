@@ -1,7 +1,7 @@
 <?php
 include_once("ChamaQuest.class.php");
 include_once("crud.php");
-//teste
+//teste fazendo alterações
 class GeraProvaTurma
 {
 
