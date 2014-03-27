@@ -4,9 +4,8 @@ require_once('fpdf/fpdf.php');
 
 /**
  *	Esta classe é responsavel pela criação da prova para 1 aluno.
- *  @author Bruno Araujo
+ *  @author Bruno Araujo <estalatec@gmail.com>
  *  @package controller  
- *  @version 
  */
 
 class ChamaQuest {
