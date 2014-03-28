@@ -3,7 +3,10 @@ include_once('crud.php');
 require_once('fpdf/fpdf.php');
 
 /**
- *	Esta classe é responsavel pela criação da prova para 1 aluno.
+ *	Esta classe é responsavel pela criação da prova para  e escrita do PDF,
+ *  nela busca-se as questoes e numero de questoes de prova para  1 aluno .
+ *  O arquivo para uma turma e gerado em outra cassa mas parte desta como principio.
+ * 
  *  @author Bruno Araujo <estalatec@gmail.com>
  *  @package controller  
  */
@@ -90,7 +93,6 @@ class ChamaQuest {
 		$this->pdf->SetFont('arial','B',12);
 		$this->pdf->Cell(70,20,"Aluno:",0,0,'L');
 		$this->pdf->setFont('arial','',12);
-		//$this->pdf->Image($this->getLinkQr(),300,380,100,100,'png');
 		$this->pdf->Cell(70,20,$nome,0,1,'L');
 		
 	}
