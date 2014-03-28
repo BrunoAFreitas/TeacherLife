@@ -11,7 +11,6 @@ class GeraProvaTurma
 	private $turma;
 	private $arrayaluno;
 
-
 	public function __construct( $turma )
 	{
 		$this -> quest = new ChamaQuest();
@@ -38,5 +37,4 @@ class GeraProvaTurma
 		$this->quest->geraGabTurma($this->arrayaluno);
 		$this->quest->fexarPdf();
 	}
-}
-?>
+}?>
