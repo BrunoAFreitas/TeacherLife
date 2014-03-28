@@ -26,6 +26,29 @@ class ChamaQuest {
 		$this -> setRand();
 	}
 
+	public function geraGabTurma($alunoGabarito){
+		$this->pdf->AddPage();
+		$this->pdf->Ln();
+		$this->pdf->SetFont('arial','B',18);
+		$this->pdf->Cell(0,5,"Gabarito da turma",0,1,'C');
+		$this->pdf->Cell(0,5,"","B",1,'C');
+
+		$espaco = 60;
+
+		foreach ($alunoGabarito as $aluno => $gabarito) {
+			$this->setGabarito($gabarito);
+			$this->pdf->Ln();
+			$this->pdf->SetFont('arial','B',12);
+			$this->pdf->Cell(70,50,"Aluno:",0,0,'L');
+			$this->pdf->setFont('arial','',12);
+			$this->pdf->Cell(70,50,$aluno,0,1,'L');
+			$this->pdf->Image($this->getLinkQr(),300,$espaco,100,100,'png');
+
+			$espaco += 90;
+		}
+
+	}
+
 	protected function setRand(){
 		$this->rand = $this->crud->conexao->countData($this->query);
 	}
@@ -67,7 +90,7 @@ class ChamaQuest {
 		$this->pdf->SetFont('arial','B',12);
 		$this->pdf->Cell(70,20,"Aluno:",0,0,'L');
 		$this->pdf->setFont('arial','',12);
-		$this->pdf->Image($this->getLinkQr(),300,380,100,100,'png');
+		//$this->pdf->Image($this->getLinkQr(),300,380,100,100,'png');
 		$this->pdf->Cell(70,20,$nome,0,1,'L');
 		
 	}
@@ -119,9 +142,10 @@ class ChamaQuest {
 		
 		$gabarito = null;
 		$this->iniciaPdf();
+		$this -> cabecalho($nomeAluno);
+		
 		$rand = $this->rand;
-
-
+		
 		foreach ($this->getRandomNumbers($rand, 1, $rand, false, false) as $count) {
 			
 			$this->crud->setCondicao("quest_num = " . $count);
@@ -139,8 +163,7 @@ class ChamaQuest {
 
 		
 		$this -> setGabarito($gabarito);
-		$this -> cabecalho($nomeAluno);		
-		//$this -> fexarPdf($nomeAluno);
+				
 
 	}
 		

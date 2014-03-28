@@ -1,6 +1,7 @@
 <?php
 include_once("ChamaQuest.class.php");
 include_once("crud.php");
+include_once('fpdf/fpdf.php');
 
 class GeraProvaTurma
 {
@@ -10,12 +11,15 @@ class GeraProvaTurma
 	private $turma;
 	private $arrayaluno;
 
+
 	public function __construct( $turma )
 	{
 		$this -> quest = new ChamaQuest();
 		$this -> crud  = new Crud();
 		$this -> turma = $turma;
 	}
+
+
 
 	public function gerarProvas()
 	{
@@ -24,13 +28,14 @@ class GeraProvaTurma
 		$this->crud->setFields('*');
 		$query = $this->crud->select();
 		
-		while($aluno = mysql_fetch_array($query)){			
+		while($aluno = mysql_fetch_array($query))
+		{			
 			 
 			 $this->quest->geraProva($aluno['tur_aluno']);
 			 $this->arrayaluno[$aluno['tur_aluno']] = $this->quest->getGabarito();
 			 
 		}
-		
+		$this->quest->geraGabTurma($this->arrayaluno);
 		$this->quest->fexarPdf();
 	}
 }
