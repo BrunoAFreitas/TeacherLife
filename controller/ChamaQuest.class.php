@@ -39,6 +39,9 @@ class ChamaQuest {
 		$espaco = 60;
 
 		foreach ($alunoGabarito as $aluno => $gabarito) {
+
+			$espaco = ($espaco > 600) ? 10 : $espaco;
+
 			$this->setGabarito($gabarito);
 			$this->pdf->Ln();
 			$this->pdf->SetFont('arial','B',12);

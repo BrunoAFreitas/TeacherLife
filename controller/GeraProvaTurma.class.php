@@ -39,7 +39,4 @@ class GeraProvaTurma
 		$this->quest->fexarPdf();
 	}
 }
-
-$a = new GeraProvaTurma('tuma1a');
-$a -> gerarProvas();
 ?>
