@@ -40,14 +40,14 @@ class ChamaQuest {
 
 		foreach ($alunoGabarito as $aluno => $gabarito) {
 
-			$espaco = ($espaco > 600) ? 10 : $espaco;
+			$espaco = ($espaco > 600) ? 20 : $espaco;
 
 			$this->setGabarito($gabarito);
 			$this->pdf->Ln();
 			$this->pdf->SetFont('arial','B',12);
 			$this->pdf->Cell(70,50,"Aluno:",0,0,'L');
 			$this->pdf->setFont('arial','',12);
-			$this->pdf->Cell(70,50,$aluno,0,1,'L');
+			$this->pdf->Cell(70,50,$aluno,0,2,'L');
 			$this->pdf->Image($this->getLinkQr(),300,$espaco,100,100,'png');
 
 			$espaco += 90;
@@ -62,7 +62,7 @@ class ChamaQuest {
 	protected function setQuery(){
 		$this->crud->setTable("questoes");
 		$this->crud->setFields("*");
-		$this->query = $this -> crud -> select();
+		$this->query = $this -> crud -> select(); 
 	}
 		
 	protected function getLinkQr(){
@@ -80,7 +80,7 @@ class ChamaQuest {
 	}
 	
 	public function getGabarito(){
-		return $this -> gabarito;
+		return $this -> gabarito; 
 	}
 	
 	public function iniciaPdf(){
